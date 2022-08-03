@@ -21,7 +21,7 @@ const ActionBar: React.FC<ActionBarProps> = ({ onAddDelivery }) => {
         />
         <Button
           type="primary"
-          className="rounded py-2 px-4 h-fit"
+          className="rounded py-2 px-4 h-fit bg-primary"
           onClick={onAddDelivery}
         >
           New delivery

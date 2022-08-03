@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Modal } from "antd";
 
-import { Layout } from "../../UI";
 import { ActionBar, DeliveryList } from "./components";
 import { useDelivery } from "../../hooks";
 import AddDeliveryFormGroup from "./components/Form/AddDeliveryFormGroup";
@@ -29,8 +28,12 @@ const DeliveryListPage: React.FC = () => {
     handleCancel();
   };
 
-  const handleOk = () => {
-    handleFormSubmit(form.getFieldsValue());
+  const handleOk = async () => {
+    const isValid = await form.validateFields();
+
+    if (isValid) {
+      handleFormSubmit(form.getFieldsValue());
+    }
   };
 
   const handleCancel = () => {
@@ -47,6 +50,9 @@ const DeliveryListPage: React.FC = () => {
         title={<span className="text-2xl">New delivery</span>}
         visible={isDeliveryModalVisible}
         onOk={handleOk}
+        okButtonProps={{ className: "bg-primary" }}
+        okText="Create new delivery"
+        bodyStyle={{ padding: "0 24px 24px " }}
         onCancel={handleCancel}
       >
         <Form form={form} onFinish={handleFormSubmit} layout="vertical">

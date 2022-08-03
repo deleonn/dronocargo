@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DeliveryDetailsPage, DeliveryListPage } from "../features";
 
-type Route = {
+type RouteType = {
   path: string;
   element: React.ReactNode;
   index?: boolean;
 };
 
-const routes: Route[] = [
+const routes: RouteType[] = [
   {
     path: "/",
     element: <DeliveryListPage />,
